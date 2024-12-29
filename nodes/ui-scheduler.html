@@ -953,16 +953,15 @@ copies or substantial portions of the Software.
                 timeZone: { value: '' },
                 use24HourFormat: { value: false },
                 storeName: { value: '' },
-                commandResponseMsgOutput: { value: 'output1' },
+                commandResponseMsgOutput: { value: 'fanOut' },
                 defaultLocation: { value: '' },
                 defaultLocationType: { value: '' },
                 sendStateInterval: { value: 60 },
                 sendActiveState: { value: true },
                 sendInactiveState: { value: true },
-                outputs: { value: 1 },
                 topics: { value: ['Topic 1'] },
                 options: {
-                    value: [{ payload: '', topic: '', expression: '' }],
+                    value: [],
                     validate: function (value) {
                         const dupCheck = {}
                         if (value.length) {

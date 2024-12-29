@@ -42,11 +42,12 @@
         "cross-env": "^7.0.3",
         "pretty-ms": "7.0.1",
         "suncalc2": "^1.8.1",
-        "vue": "^3.3.8",
+        "vue": "^3.4.5",
         "vuex": "^4.1.0"
     },
     "devDependencies": {
-        "@vitejs/plugin-vue": "^4.5.0",
+        "@vitejs/plugin-vue": "^5.0.4",
+        "cross-env": "^7.0.3",
         "eslint": "^8.53.0",
         "eslint-config-standard": "^17.1.0",
         "eslint-plugin-import": "^2.29.0",
@@ -56,7 +57,7 @@
         "vite": "^5.0.13",
         "vite-plugin-css-injected-by-js": "^3.3.0",
         "vite-plugin-static-copy": "^1.0.6",
-        "vuetify": "^3.6.13"
+        "vuetify": "^3.7.6"
     },
     "engines": {
         "node": ">=14"
@@ -64,13 +65,13 @@
     "node-red": {
         "version": ">=3.0.0",
         "nodes": {
-            "ui-example": "nodes/ui-scheduler.js"
+            "ui-scheduler": "nodes/ui-scheduler.js"
         }
     },
     "node-red-dashboard-2": {
         "version": "1.0.0",
         "widgets": {
-            "ui-example": {
+            "ui-scheduler": {
                 "output": "ui-scheduler.umd.js",
                 "component": "UIScheduler"
             }

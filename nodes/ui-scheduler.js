@@ -889,7 +889,6 @@ module.exports = function (RED) {
         const node = this
         const group = RED.nodes.getNode(config.group)
         const base = group.getBase()
-        node.base = base
         node.payloadType = config.payloadType || config.type || 'default'
         // delete config.type
         node.payload = config.payload
@@ -3080,6 +3079,7 @@ const timeZones = [
     { code: 'BR', latLon: '-2332-04637', tz: 'America/Sao_Paulo', UTCOffset: '-03:00', UTCDSTOffset: '-03:00' },
     { code: 'GL', latLon: '+7029-02158', tz: 'America/Scoresbysund', UTCOffset: '-01:00', UTCDSTOffset: '+00:00' },
     { code: 'US', latLon: '+571035-1351807', tz: 'America/Sitka', UTCOffset: '-09:00', UTCDSTOffset: '-08:00' },
+    { code: 'US', latLon: '+435459-0967312', tz: 'America/South_Dakota/Sioux_Falls', UTCOffset: '-06:00', UTCDSTOffset: '-05:00' },
     { code: 'CA', latLon: '+4734-05243', tz: 'America/St_Johns', UTCOffset: '-03:30', UTCDSTOffset: '-02:30' },
     { code: 'CA', latLon: '+5017-10750', tz: 'America/Swift_Current', UTCOffset: '-06:00', UTCDSTOffset: '-06:00' },
     { code: 'HN', latLon: '+1406-08713', tz: 'America/Tegucigalpa', UTCOffset: '-06:00', UTCDSTOffset: '-06:00' },

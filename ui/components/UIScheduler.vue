@@ -53,7 +53,7 @@
                                     <em>No item selected</em>
                                 </div>
                                 <v-btn
-                                    v-if="item" icon :disabled="item.isStatic || item.readonly"
+                                    v-if="item" icon color="primary" :disabled="item.isStatic || item.readonly"
                                     @click="editSchedule(item)"
                                 >
                                     <v-icon>mdi-pencil</v-icon>
@@ -127,10 +127,10 @@
         </v-data-table>
 
         <v-dialog v-model="dialog" color="background" max-width="450px">
+            <v-alert v-model="validationResult.alert" type="error" closable>
+                {{ validationResult.message }}
+            </v-alert>
             <v-card>
-                <v-alert v-model="validationResult.alert" type="error" closable>
-                    {{ validationResult.message }}
-                </v-alert>
                 <v-card-title class="d-flex align-items-center justify-space-between">
                     <span class="text-h5">{{ isEditing ? 'Edit Schedule' : 'New Schedule' }}</span>
                     <div class="d-flex align-items-center">
@@ -434,6 +434,7 @@
 import { useDisplay } from 'vuetify'
 </script>
 <script>
+import { VTimePicker } from 'vuetify/labs/VTimePicker'
 import { mapState } from 'vuex'
 
 function hsvToRgb (h, s, v) {
@@ -481,6 +482,7 @@ function hsvToRgb (h, s, v) {
 
 export default {
     name: 'UIScheduler',
+    components: { VTimePicker },
     inject: ['$socket', '$dataTracker'],
     props: {
         id: {
@@ -639,15 +641,25 @@ export default {
             }
         },
         filteredSchedules () {
+            if (!this.schedules) {
+                return []
+            }
+
             const filteredSchedules = this.selectedTopic === 'All'
                 ? this.schedules
                 : this.schedules.filter((schedule) => schedule.topic === this.selectedTopic)
 
-            return filteredSchedules.map((item, index) => ({
-                ...item,
-                rowNumber: index + 1
-            }))
+            return filteredSchedules.map((item, index) => {
+                if (this.$vuetify.display.xs) {
+                    return {
+                        ...item,
+                        rowNumber: index + 1
+                    }
+                }
+                return item
+            })
         },
+
         filteredHeaders () {
             return this.$vuetify.display.xs
                 ? this.headers.map((header) => {
@@ -892,7 +904,7 @@ export default {
             const isNameDuplicate = this.schedules
                 ? this.schedules.some(
                     schedule =>
-                        schedule.name === this.name && schedule !== this.currentSchedule
+                        schedule.name === this.name && schedule !== this.currentSchedule && !this.isEditing
                 )
                 : false
             if (isNameDuplicate) {
@@ -1136,33 +1148,7 @@ export default {
     }
 }
 </script>
-<style>
-.highlighted-row {
-    background-color: rgb(var(--v-theme-surface));
-    /* color: rgb(var(--v-theme-on-primary)); */
-    /* Customize this color as needed */
-}
 
-.main {
-    min-width: 100%;
-    /* Allows content to shrink */
-    max-width: fit-content;
-    /* Limits container width to parent width */
-    overflow: auto;
-    /* Adds scrollbar if content overflows */
-    display: inline-block;
-    /* Ensure content is scrollable if it overflows */
-}
-
-.v-data-table tbody tr:nth-of-type(even) {
-    background-color: rgba(0, 0, 0, .03);
-}
-.v-data-table__td.v-data-table-column--align-center {
-    margin-right: 0 !important;
-    padding-right: 0 !important;
-}
-.v-data-table__td.v-data-table-column--align-start {
-    margin-right: 0 !important;
-    padding-right: 0 !important;
-}
+<style scoped>
+@import "../stylesheets/ui-scheduler.css";
 </style>
