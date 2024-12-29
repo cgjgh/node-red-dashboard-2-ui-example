@@ -5,6 +5,6 @@
  */
 import { createApp } from 'vue'
 
-import UIExample from './components/UIExample.vue'
+import UIScheduler from './components/UIScheduler.vue'
 
-createApp(UIExample).mount('#app')
+createApp(UIScheduler).mount('#app')
