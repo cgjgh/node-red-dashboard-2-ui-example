@@ -1,7 +1,6 @@
 import { resolve } from 'path'
 
 import vue from '@vitejs/plugin-vue'
-import vuetify from 'vite-plugin-vuetify'
 import { defineConfig, normalizePath } from 'vite'
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
@@ -14,7 +13,6 @@ const LIBRARY_NAME = 'ui-scheduler'
 export default defineConfig({
     plugins: [
         vue(),
-        vuetify(),
         cssInjectedByJsPlugin(),
         viteStaticCopy({
             targets: [
