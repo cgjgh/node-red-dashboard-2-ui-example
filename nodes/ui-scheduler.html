@@ -952,6 +952,7 @@ copies or substantial portions of the Software.
                 outputField: { value: 'payload' },
                 timeZone: { value: '' },
                 use24HourFormat: { value: false },
+                useNewTimePicker: { value: false },
                 storeName: { value: '' },
                 commandResponseMsgOutput: { value: 'fanOut' },
                 defaultLocation: { value: '' },
@@ -2622,6 +2623,10 @@ copies or substantial portions of the Software.
         <div class="form-row ui-scheduler-form-row">
             <label for="node-input-outputField"><i class="fa fa-sign-out"></i> Output property</label>
             <input type="text" id="node-input-outputField" style="width: calc(100% - 130px)" placeholder="payload">
+        </div>
+        <div class=" form-row ui-scheduler-form-row">
+            <label for="node-input-useNewTimePicker"><i class="fa fa-clock-o"></i> Use new timepicker (if available)</label>
+            <input type="checkbox" id="node-input-useNewTimePicker" style="display: inline-block; width: auto; margin: 0px 0px 0px 4px;">
         </div>
     
         <style>
